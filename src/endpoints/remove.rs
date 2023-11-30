@@ -31,7 +31,7 @@ pub async fn remove(data: web::Data<AppState>, id: web::Path<String>) -> Result<
                 return Ok(HttpResponse::Found()
                     .append_header((
                         "Location",
-                        format!("/auth_remove_private/{}", pasta.id_as_animals()),
+                        format!("{}/auth_remove_private/{}", ARGS.public_path_as_str(), pasta.id_as_animals()),
                     ))
                     .finish());
             }
@@ -156,7 +156,7 @@ pub async fn post_remove(
                         return Ok(HttpResponse::Found()
                             .append_header((
                                 "Location",
-                                format!("/auth_remove_private/{}/incorrect", pasta.id_as_animals()),
+                                format!("{}/auth_remove_private/{}/incorrect", ARGS.public_path_as_str(), pasta.id_as_animals()),
                             ))
                             .finish());
                     }
@@ -164,7 +164,7 @@ pub async fn post_remove(
                     return Ok(HttpResponse::Found()
                         .append_header((
                             "Location",
-                            format!("/auth_remove_private/{}/incorrect", pasta.id_as_animals()),
+                            format!("{}/auth_remove_private/{}/incorrect", ARGS.public_path_as_str(), pasta.id_as_animals()),
                         ))
                         .finish());
                 }
