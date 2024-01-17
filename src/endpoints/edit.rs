@@ -49,7 +49,7 @@ pub async fn get_edit(data: web::Data<AppState>, id: web::Path<String>) -> HttpR
                     .finish();
             }
 
-            return HttpResponse::Ok().content_type("text/html").body(
+            return HttpResponse::Ok().content_type("text/html; charset=utf-8").body(
                 EditTemplate {
                     pasta,
                     args: &ARGS,
@@ -63,7 +63,7 @@ pub async fn get_edit(data: web::Data<AppState>, id: web::Path<String>) -> HttpR
     }
 
     HttpResponse::Ok()
-        .content_type("text/html")
+        .content_type("text/html; charset=utf-8")
         .body(ErrorTemplate { args: &ARGS }.render().unwrap())
 }
 
@@ -101,7 +101,7 @@ pub async fn get_edit_with_status(
                     .finish();
             }
 
-            return HttpResponse::Ok().content_type("text/html").body(
+            return HttpResponse::Ok().content_type("text/html; charset=utf-8").body(
                 EditTemplate {
                     pasta,
                     args: &ARGS,
@@ -115,7 +115,7 @@ pub async fn get_edit_with_status(
     }
 
     HttpResponse::Ok()
-        .content_type("text/html")
+        .content_type("text/html; charset=utf-8")
         .body(ErrorTemplate { args: &ARGS }.render().unwrap())
 }
 
@@ -188,7 +188,7 @@ pub async fn post_edit_private(
         }
 
         // serve pasta in template
-        let response = HttpResponse::Ok().content_type("text/html").body(
+        let response = HttpResponse::Ok().content_type("text/html; charset=utf-8").body(
             EditTemplate {
                 pasta: &pastas[index],
                 args: &ARGS,
@@ -206,7 +206,7 @@ pub async fn post_edit_private(
         return Ok(response);
     }
     Ok(HttpResponse::Ok()
-        .content_type("text/html")
+        .content_type("text/html; charset=utf-8")
         .body(ErrorTemplate { args: &ARGS }.render().unwrap()))
 }
 
@@ -303,7 +303,7 @@ pub async fn post_submit_edit_private(
             .finish());
     }
     Ok(HttpResponse::Ok()
-        .content_type("text/html")
+        .content_type("text/html; charset=utf-8")
         .body(ErrorTemplate { args: &ARGS }.render().unwrap()))
 }
 
@@ -394,6 +394,6 @@ pub async fn post_edit(
     }
 
     Ok(HttpResponse::Ok()
-        .content_type("text/html")
+        .content_type("text/html; charset=utf-8")
         .body(ErrorTemplate { args: &ARGS }.render().unwrap()))
 }
