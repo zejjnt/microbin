@@ -88,7 +88,7 @@ fn pastaresponse(
         }
 
         // serve pasta in template
-        let response = HttpResponse::Ok().content_type("text/html").body(
+        let response = HttpResponse::Ok().content_type("text/html; charset=utf-8").body(
             PastaTemplate {
                 pasta: &pastas[index],
                 args: &ARGS,
@@ -123,7 +123,7 @@ fn pastaresponse(
 
     // otherwise send pasta not found error
     Ok(HttpResponse::Ok()
-        .content_type("text/html")
+        .content_type("text/html; charset=utf-8")
         .body(ErrorTemplate { args: &ARGS }.render().unwrap()))
 }
 
@@ -236,14 +236,14 @@ fn urlresponse(data: web::Data<AppState>, id: web::Path<String>) -> Result<HttpR
         // send error if we're trying to open a non-url pasta as a redirect
         } else {
             HttpResponse::Ok()
-                .content_type("text/html")
+                .content_type("text/html; charset=utf-8")
                 .body(ErrorTemplate { args: &ARGS }.render().unwrap());
         }
     }
 
     // otherwise send pasta not found error
     Ok(HttpResponse::Ok()
-        .content_type("text/html")
+        .content_type("text/html; charset=utf-8")
         .body(ErrorTemplate { args: &ARGS }.render().unwrap()))
 }
 
@@ -326,7 +326,7 @@ pub async fn getrawpasta(
 
     // otherwise send pasta not found error as raw text
     Ok(HttpResponse::NotFound()
-        .content_type("text/html")
+        .content_type("text/html; charset=utf-8")
         .body(String::from("Upload not found! :-(")))
 }
 
@@ -427,7 +427,7 @@ pub async fn postrawpasta(
 
         // send raw content of pasta
         let response = Ok(HttpResponse::NotFound()
-            .content_type("text/html")
+            .content_type("text/html; charset=utf-8")
             .body(pastas[index].content.to_owned()));
 
         if pastas[index].content != original_content {
@@ -439,7 +439,7 @@ pub async fn postrawpasta(
 
     // otherwise send pasta not found error as raw text
     Ok(HttpResponse::NotFound()
-        .content_type("text/html")
+        .content_type("text/html; charset=utf-8")
         .body(String::from("Upload not found! :-(")))
 }
 
