@@ -1,6 +1,6 @@
 # This is a fork of fork of https://github.com/szabodanika/microbin
 
-The developer has been absent thus far.
+temp repo for merged fixes of Microbin until the original [maintainer be back](https://github.com/szabodanika/microbin/issues/249#issuecomment-1994209506) in the summer.
 
 See the previous fork and closed pull requests to see what has been merged.
 
