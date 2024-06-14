@@ -56,11 +56,13 @@ pub fn expiration_to_timestamp(expiration: &str, timenow: i64) -> i64 {
         "24hour" => timenow + 60 * 60 * 24,
         "3days" => timenow + 60 * 60 * 24 * 3,
         "1week" => timenow + 60 * 60 * 24 * 7,
+		"2week" => timenow + 60 * 60 * 24 * 14,
+		"1month" => timenow + 60 * 60 * 24 * 31,
         "never" => {
             if ARGS.eternal_pasta {
-                timenow + 60 * 60 * 24 * 7
-            } else {
                 0
+            } else {
+                timenow + 60 * 60 * 24 * 7
             }
         }
         _ => {
