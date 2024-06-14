@@ -51,13 +51,19 @@ pub async fn index_with_status(param: web::Path<String>) -> HttpResponse {
 pub fn expiration_to_timestamp(expiration: &str, timenow: i64) -> i64 {
     match expiration {
         "1min" => timenow + 60,
+        "5min" => timenow + 60 * 5,
         "10min" => timenow + 60 * 10,
+        "30min" => timenow + 60 * 30,
         "1hour" => timenow + 60 * 60,
-        "24hour" => timenow + 60 * 60 * 24,
+        "3hours" => timenow + 60 * 60 * 3,
+        "6hours" => timenow + 60 * 60 * 6,
+        "12hours" => timenow + 60 * 60 * 12,
+        "24hours" => timenow + 60 * 60 * 24,
         "3days" => timenow + 60 * 60 * 24 * 3,
         "1week" => timenow + 60 * 60 * 24 * 7,
-		"2week" => timenow + 60 * 60 * 24 * 14,
+		"2weeks" => timenow + 60 * 60 * 24 * 14,
 		"1month" => timenow + 60 * 60 * 24 * 31,
+        "3months" => timenow + 60 * 60 * 24 * 92,
         "never" => {
             if ARGS.eternal_pasta {
                 0
